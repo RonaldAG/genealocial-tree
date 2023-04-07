@@ -17,6 +17,7 @@ public class Program {
 		
 		int selection = 0;
 		do {
+			System.out.println();
 			selection = menu(sc); // print menu and get the user's choice
 			
 			switch(selection) {

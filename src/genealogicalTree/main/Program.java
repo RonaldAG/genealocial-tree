@@ -35,6 +35,10 @@ public class Program {
 					String pessoaDeserdada = inputDeserdaMembroFamiliar(sc);
 					pessoa.deserdaPessoa(pessoaDeserdada);
 					break;
+				case 5:
+					String[] nomesAdotados = inputAdotaPessoa(sc);
+					pessoa.adotaPessoa(nomesAdotados[0], nomesAdotados[1]);
+					break;
 				default:
 					break;
 			}
@@ -48,6 +52,7 @@ public class Program {
 						"\n[2] Exibir árvore genealógica" + 
 						"\n[3] Alterar ancestral" +
 						"\n[4] Deserda membro familiar" +
+						"\n[5] Adota filho" + 
 						"\n[0] Sair";
 		
 		System.out.println(menu);
@@ -81,5 +86,17 @@ public class Program {
 		sc.nextLine();
 		System.out.print("Nome do membro a ser deserdado: ");
 		return sc.nextLine();
+	}
+	
+	public static String[] inputAdotaPessoa(Scanner sc) {
+		sc.nextLine();
+		System.out.print("Nome do adotador(a): ");
+		String[] nomes = new String[2];
+		nomes[0] = sc.nextLine();
+		
+		System.out.print("Nome do adotado(a): ");
+		nomes[1] = sc.nextLine();
+		
+		return nomes;
 	}
 }

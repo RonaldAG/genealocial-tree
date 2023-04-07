@@ -77,6 +77,36 @@ public class Pessoa {
 		}
 				
 	}
+	
+	public void adotaPessoa(String nomeMae, String nomeAdotado) {
+		Pessoa adotado = new Pessoa();
+		adotado.setNome(nomeAdotado);
+		
+		Pessoa pessoa = this;
+		
+		if(pessoa.getNome().equals(nomeMae)) {
+			Pessoa aux = new Pessoa();
+			aux.setNome(this.getNome());
+			aux.setMae(this.getMae());
+			
+			this.setNome(adotado.getNome());
+			this.setMae(aux);
+		}
+		else {
+			Pessoa pessoaAnterior = new Pessoa();
+			do {
+				if(pessoa.getNome().equals(nomeMae)) {
+					pessoaAnterior.setMae(adotado);
+					adotado.setMae(pessoa);
+				}
+				
+				pessoaAnterior = pessoa;
+				pessoa = pessoa.getMae();
+			} while(pessoa != null);
+				
+		}
+		
+	}
 
 	@Override
 	public String toString() {

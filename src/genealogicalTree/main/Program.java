@@ -27,6 +27,14 @@ public class Program {
 				case 2:
 					pessoa.exibiArvoreGenealogica();
 					break;
+				case 3: 
+					String[] nomes = inputAlteraNome(sc);
+					pessoa.alterarAncestral(nomes[0], nomes[1]);
+					break;
+				case 4:
+					String pessoaDeserdada = inputDeserdaMembroFamiliar(sc);
+					pessoa.deserdaPessoa(pessoaDeserdada);
+					break;
 				default:
 					break;
 			}
@@ -38,6 +46,8 @@ public class Program {
 	public static int menu(Scanner sc) {
 		String menu =  "[1] Adicionar ancestral" +
 						"\n[2] Exibir árvore genealógica" + 
+						"\n[3] Alterar ancestral" +
+						"\n[4] Deserda membro familiar" +
 						"\n[0] Sair";
 		
 		System.out.println(menu);
@@ -52,5 +62,24 @@ public class Program {
 		pessoa.setNome(name);
 		
 		return pessoa;
+	}
+	
+	public static String[] inputAlteraNome(Scanner sc) {
+		sc.nextLine();
+		String[] nomes = new String[2];
+		
+		System.out.print("Nome do ancestral que deseja alterar: ");
+		nomes[0] = sc.nextLine();
+		
+		System.out.print("Nome novo do ancestral: ");
+		nomes[1] = sc.nextLine();
+		
+		return nomes;
+	}
+	
+	public static String inputDeserdaMembroFamiliar(Scanner sc) {
+		sc.nextLine();
+		System.out.print("Nome do membro a ser deserdado: ");
+		return sc.nextLine();
 	}
 }

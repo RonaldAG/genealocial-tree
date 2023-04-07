@@ -45,6 +45,38 @@ public class Pessoa {
 			pessoa = pessoa.getMae();
 		} while(pessoa != null);
 	}
+	
+	public void alterarAncestral(String nomeAntigo, String novoNome) {
+		Pessoa pessoa = this;
+		do {
+			if(pessoa.getNome().equals(nomeAntigo)) {
+				pessoa.setNome(novoNome);
+				break;
+			}
+			pessoa = pessoa.getMae();
+		} while(pessoa != null);
+	}
+	
+	public void deserdaPessoa(String nomePessoa) {
+		Pessoa pessoa = this;
+		
+		//Verify if is the first person that it will be desorded
+		if(pessoa.getNome().equals(nomePessoa)) {
+			pessoa.setNome(pessoa.getMae().getNome());
+			pessoa.setMae(pessoa.getMae().getMae());
+		}
+		else {
+			//Pass through the family three and check if that is a person with the name passed
+			do {
+				if(pessoa.getMae().getNome().equals(nomePessoa)) {
+					pessoa.setMae(pessoa.getMae().getMae());
+					break;
+				}
+				pessoa = pessoa.getMae();
+			} while(pessoa != null);
+		}
+				
+	}
 
 	@Override
 	public String toString() {
